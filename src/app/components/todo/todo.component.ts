@@ -25,4 +25,9 @@ export class TodoComponent implements OnInit {
    this.firebaseService.getAvatars();
   }
 
+  deleteTodo(todo:Todo){
+    console.log("detle me");
+    this.todos = this.todos.filter(t => t.id !== todo.id);
+  }
+
 }

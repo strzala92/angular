@@ -9,18 +9,22 @@ const httpOptions ={
   })
 }
 
+  
 @Injectable({
   providedIn: 'root'
 })
+
 export class TodoService {
   todosUrl = 'https://jsonplaceholder.typicode.com/todos';
   todosLimit = '?_limit_5';
+
   constructor(private http: HttpClient) { }
 
   getTodos():Observable<Todo[]>{
     return this.http.get<Todo[]>(`${this.todosUrl}${this.todosLimit}`);
   }
   toggleCompleted(todo:Todo):Observable<any>{
-    return this.http.put(this.todosUrl,todo,httpOptions)
+    const url = `${this.todosUrl}/${this.todosLimit}`;
+    return this.http.put(url,todo,httpOptions);
   }
 }
