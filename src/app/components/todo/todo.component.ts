@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Todo } from '../../models/Todo';
 import { TodoService } from '../../services/todo.service';
+import { FireService } from 'src/app/services/fire.service';
 
 @Component({
   selector: 'app-todo',
@@ -11,12 +12,17 @@ export class TodoComponent implements OnInit {
   todos:Todo[];
 
 
-  constructor(private todoService:TodoService) { }
+  constructor(
+    private todoService:TodoService,
+    public firebaseService:FireService
+    
+    ) { }
 
   ngOnInit() {
    this.todoService.getTodos().subscribe(todos => {
      this.todos = todos;
    });
+   this.firebaseService.getAvatars();
   }
 
 }
