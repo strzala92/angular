@@ -1,8 +1,10 @@
-<div [ngClass]="setClasses()">
+<div [ngClass]="setClasses()" *ngIf="todo.completed">
     <p>
         <input (change)="onToggle(todo)" type="checkbox"/>
         {{ todo.title }}
         <button (click)="onDelete(todo)">x</button>
+        {{ todo.completed }}
+        {{todo.id}}
     </p>
 </div>
 

@@ -20,11 +20,10 @@ export class TodoService {
 
   constructor(private http: HttpClient) { }
 
-  getTodos():Observable<Todo[]>{
-    return this.http.get<Todo[]>(`${this.todosUrl}${this.todosLimit}`);
+  getTodos(){
+   
   }
-  toggleCompleted(todo:Todo):Observable<any>{
-    const url = `${this.todosUrl}/${this.todosLimit}`;
-    return this.http.put(url,todo,httpOptions);
+  toggleCompleted(todo:Todo){
+ 
   }
 }

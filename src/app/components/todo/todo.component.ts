@@ -9,25 +9,26 @@ import { FireService } from 'src/app/services/fire.service';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-  todos:Todo[];
-
+  todos:any[];
 
   constructor(
-    private todoService:TodoService,
     public firebaseService:FireService
     
     ) { }
 
   ngOnInit() {
-   this.todoService.getTodos().subscribe(todos => {
-     this.todos = todos;
-   });
-   this.firebaseService.getAvatars();
+    this.getData();
+    console.log(this.todos)
   }
 
-  deleteTodo(todo:Todo){
-    console.log("detle me");
-    this.todos = this.todos.filter(t => t.id !== todo.id);
+  getData(){
+    this.firebaseService.getTasks().subscribe(result => {
+      result.map(e =>{ 
+        const id = e.payload.doc.id;
+        const data = e.payload.doc.data();
+        this.todos = [{id , ...data}]
+      })
+    });
   }
 
 }
