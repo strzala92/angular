@@ -1,7 +1,27 @@
-<h1>Todos</h1>
+<h1 class="header">Todo application Angular</h1>
+<div class="forms">
+              <form class="forms-container" [formGroup]="exampleForm" 
+              novalidate
+              (ngSubmit)="onSubmit(exampleForm.value)"
+              >
+                <div class="form-group">
+                        <input type="text" id="inp" placeholder="What are you planning?" class="form-control" formControlName="title">
+                        <span class="label">Label</span>
+                  <ng-container *ngFor="let validation of validation_messages.title">
+                  </ng-container>
+                </div>
+                <div class="form-submit">
+                    <button class="submit-button" color="primary" type="submit" [disabled]="!exampleForm.valid">Create</button>
+                </div>
+      
+              </form>
+            </div>
+
+<ul class="todos-list">
 <app-todo-item 
 *ngFor="let todo of todos" 
 [todo]="todo"
-(deleteTodo)="deleteTodo($event)"
+(removeTodo)="removeTodo($event)"
 >
 </app-todo-item>
+</ul>

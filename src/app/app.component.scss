@@ -1,0 +1,16 @@
+.app{
+background: #5f2c82;  
+background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+background: linear-gradient(to right, #49a09d, #5f2c82);
+display: flex;
+min-height: 100%;
+.app-container{
+    width: 600px;
+    padding:30px;
+    margin:auto;
+    background-color: #fff;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 23px;
+}
+}
