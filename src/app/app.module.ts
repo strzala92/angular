@@ -10,7 +10,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -26,8 +25,7 @@ import {MatCardModule} from '@angular/material/card';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     FormsModule,
-    ReactiveFormsModule,
-    MatCardModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

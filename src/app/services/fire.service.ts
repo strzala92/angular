@@ -13,32 +13,21 @@ export class FireService {
     todoCollectionRef: AngularFirestoreCollection<any>;
     todo$: Observable<any>;
 
-//   getTasks(){
-//     return this.db.collection('tasks').snapshotChanges();
-// }
 
-
-getTask(userKey){
-  return this.db.collection('tasks').doc(userKey).snapshotChanges();
+updateTask(todoKey, value){
+  const valuenew ={
+    'title':value.title,
+    'completed':!value.completed
+  }
+  return this.db.collection('tasks').doc(todoKey).set(valuenew);
 }
 
-updateTask(userKey, value){
-  value.titleToSearch = value.title.toLowerCase();
-  return this.db.collection('tasks').doc(userKey).set(value);
-}
-
-deleteTask(userKey){
-  return this.db.collection('tasks').doc(userKey).delete();
+deleteTask(todoKey){
+  return this.db.collection('tasks').doc(todoKey).delete();
 }
 
 getTasks(){
   return this.db.collection('tasks').snapshotChanges();
-}
-
-searchTask(searchValue){
-  return this.db.collection('tasks',ref => ref.where('title', '>=', searchValue)
-    .where('title', '<=', searchValue + '\uf8ff'))
-    .snapshotChanges()
 }
 
 createTask(value){

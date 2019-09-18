@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FireService } from '../../services/fire.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -8,11 +7,13 @@ import { FireService } from '../../services/fire.service';
 })
 export class TodoItemComponent implements OnInit {
 
-  @Output() removeTodo = new EventEmitter<any>();
-  @Input() todo : any;
+  @Output()
+  removeTodo = new EventEmitter<any>();
+  @Output()
+  toggleTodo = new EventEmitter<any>();
+  @Input() todo : any; 
 
-  constructor(private firebaseService:FireService) { }
-  
+  constructor() { }
 
   ngOnInit() {
   }
@@ -20,14 +21,14 @@ export class TodoItemComponent implements OnInit {
   setClasses(){
     let classes = {
       todo: true,
-      'is-completed': this.todo.completed
+      'is-completed': this.todo.payload.doc.data().completed
     }
     return classes;
   }
   onToggle(todo){
-     this.firebaseService.createTask('Title');
+      this.toggleTodo.emit(todo);
   }
-  
+
   remove(todo): void {
     this.removeTodo.emit(todo.payload.doc.id);
   }

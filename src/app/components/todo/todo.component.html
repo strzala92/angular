@@ -6,7 +6,6 @@
               >
                 <div class="form-group">
                         <input type="text" id="inp" placeholder="What are you planning?" class="form-control" formControlName="title">
-                        <span class="label">Label</span>
                   <ng-container *ngFor="let validation of validation_messages.title">
                   </ng-container>
                 </div>
@@ -22,6 +21,7 @@
 *ngFor="let todo of todos" 
 [todo]="todo"
 (removeTodo)="removeTodo($event)"
+(toggleTodo)="toggleTodo($event)"
 >
 </app-todo-item>
 </ul>

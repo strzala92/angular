@@ -1,5 +1,5 @@
-<li [ngClass]="setClasses()" *ngIf="!todo.payload.doc.data().completed">
-        <input type="checkbox"/>
+<li [ngClass]="setClasses()">
+        <input type="checkbox" (change)="onToggle(todo)" [checked]="todo.payload.doc.data().completed"/>
         <p>{{ todo.payload.doc.data().title }}</p>
         <button (click)="remove(todo)" class="del">X</button>
 </li>

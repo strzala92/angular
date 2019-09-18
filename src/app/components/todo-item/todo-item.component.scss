@@ -15,4 +15,9 @@
             cursor: pointer;
         }
     }
+    &.is-completed{
+        p{
+            text-decoration: line-through;
+        }
+    }
 }

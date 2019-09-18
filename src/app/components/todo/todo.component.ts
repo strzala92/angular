@@ -62,5 +62,10 @@ export class TodoComponent implements OnInit {
       res => {this.getData();}
     )
   }
+  toggleTodo(todo){
+    this.firebaseService.updateTask(todo.payload.doc.id,todo.payload.doc.data()).then(
+      res => {this.getData();}
+    )
+  }
 
 }
